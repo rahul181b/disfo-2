@@ -1,5 +1,5 @@
 const Blogs = require('../model/blogs.model');
-
+const discModel = require('../model/disc.model')
 const getAll = async (req, res) => {
     try {
         const result = await Blogs.find({});
@@ -54,4 +54,6 @@ const registerUser = async (req, res) => {
     }
 }
 
-module.exports = { getAll, getUser, registerUser }
+
+
+module.exports = { getAll, registerUser, getUser }

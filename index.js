@@ -4,7 +4,8 @@ const app = express();
 
 const PORT = 8082;
 const mongoose = require('mongoose');
-const userRoute = require('./routes/user.routes')
+const userRoute = require('./routes/user.routes');
+const discussionRoute = require('./routes/discussion.route')
 const DB_URI = "mongodb://127.0.0.1:27017/blogs";
 mongoose
     .connect(`${DB_URI}`)
@@ -14,6 +15,7 @@ mongoose
 
 app.use(express.json());
 app.use("/user", userRoute);
+app.use("/discussions", discussionRoute)
 
 app.listen(PORT, () => {
     console.log('listening to PORT ', PORT);
