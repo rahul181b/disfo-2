@@ -20,4 +20,28 @@ const createDiscussion = async (req, res) => {
     }
 }
 
-module.exports = { createDiscussion }
+const getAllDiscussion = async (req, res) => {
+    try {
+        console.log("get all discussions")
+        const result = await discModel.find({});
+        res.json(result)
+    } catch (error) {
+        console.log(error);
+        res.json(error);
+    }
+}
+
+const findUserDiscussions = async (req, res) => {
+    try {
+        const { username } = req.params;
+        console.log("author is ", req.params)
+        const result = await discModel.find({ author: username });
+        res.json({ result });
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({ error })
+    }
+}
+
+
+module.exports = { createDiscussion, getAllDiscussion, findUserDiscussions }
